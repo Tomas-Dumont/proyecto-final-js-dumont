@@ -1,0 +1,155 @@
+/* Tipografía */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* color: rgb(208, 44, 44); rgb(239, 53, 53);*/
+
+/* COLORES:  #E8871E #EDB458 #D4D4AA #BAD4AA #EBF5DF */
+
+/* Reseteo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    height: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+/* ----------INDEX------- */
+
+/* Header */
+.header {
+    min-height: 15vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Menú de navegación */
+.menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.logo {
+    color: black;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 800;
+    margin-right: 20px;
+    font-size: 20px;
+
+}
+
+/* Navbar */
+.navbar ul li {
+    position: relative;
+    float: left;
+
+}
+
+.navbar ul li a {
+    font-size: 15px;
+    padding: 20px;
+    color: black;
+    display: block;
+    font-weight: 600;
+}
+
+.navbar ul li a:hover {
+    color: rgb(208, 44, 44);
+    transform: translateY(-1px);
+}
+
+
+
+
+/* Barra de Búsqueda */
+.search-box {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 300px;
+    max-width: 100%;
+    box-sizing: border-box;
+    background-color: transparent;
+
+}
+
+.search-button {
+    color: black;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: transparent;
+}
+/* Footer */
+.footer {
+    position: relative;
+    width: 100%;
+    background: whitesmoke;
+    min-height: 100px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 10px 5px;
+    flex-wrap: wrap;
+}
+
+.icon-elem {
+    list-style: none;
+}
+
+.icon {
+    color: black;
+    font-size: 32px;
+    display: inline-block;
+    margin: 0px 10px;
+    transition: 0.5s;
+}
+
+.icon:hover {
+    transform: translateY(-10px);
+    color: rgb(239, 53, 53);
+}
+
+#imagen-carrito{
+    width: 25px;
+}
+
+#imagen-carrito:hover{
+    transform: translateY(-1px);
+    color: rgb(239, 53, 53);
+}
+
+.carrito{
+    display: flex;
+    flex-direction: column;
+    min-height:68vh; 
+}
+
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="./js/stock.js"></script>
+    <script src="./js/carrito-storage.js" defer></script>
+    <script src="./js/carrito.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Fraf Copies</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="menu container">
+            <a class="logo" href="./index.html">Fraf Copies</a>
+            </label>
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Buscar...">
+                <button type="submit" class="search-button">Buscar</button>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="./index.html">Inicio</a></li>
+                    <li><a href="#">Ofertas</a></li>
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Nosotros</a></li>
+                    <li><a href="#">Mi Cuenta</a></li>
+                    <li><a href="#"><img id="imagen-carrito"
+                                src="./img/productos/shopping_cart_17dp_5F6368_FILL0_wght400_GRAD0_opsz20.svg"
+                                alt="carrito">
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="carrito">
+            <p id="carrito-vacio">UPS! No hay productos en el carrito. <a href="./index.html">Agrega algunos</a></p>
+            <div class="tarjeta-carrito">
+                <section id="productos-container-cart"></section>
+                <section id="totales">
+                    <p>Total Unidades: <span id="unidades">0</span></p>
+                    <p>Total Precio: $ <span id="precio">0</span></p>
+                    <button id="comprar">Comprar</button>
+                    <button id="reiniciar">Reiniciar Carrito</button>
+                </section>
+            </div>
+        </section>
+
+    </main>
+    <footer class="footer">
+        <ul class="social-icon">
+            <li class="icon-elem">
+                <a href="#" class="icon"><ion-icon name="logo-whatsapp"></ion-icon></a>
+            </li>
+            <li class="icon-elem">
+                <a href="#" class="icon"><ion-icon name="logo-instagram"></ion-icon></a>
+            </li>
+            <li class="icon-elem">
+                <a href="#" class="icon"><ion-icon name="logo-facebook"></ion-icon></a>
+            </li>
+            <li class="icon-elem">
+                <a href="#" class="icon"><ion-icon name="mail"></ion-icon></a>
+            </li>
+        </ul>
+
+        <p class="text">@2024|Todos Los Derechos Reservados</p>
+    </footer>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+</body>
+
+</html>

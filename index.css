@@ -1,0 +1,146 @@
+#productos-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.tarjeta-producto{
+    max-width: 400px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+    padding: 20px 30px 20px 20px;
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+    transition: 200ms;
+
+}
+.tarjeta-producto:hover{
+    translate: 0 -10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.518);
+
+}
+
+
+.tarjeta-producto img{
+    width: 100%;
+}
+
+.tarjeta-producto button{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    background: rgb(208, 44, 44);
+    border-radius: 25px;
+    margin-top: 30px;
+    border: none;
+    color: #fff;
+}
+
+.tarjeta-producto button:hover{
+    background-color: rgb(239, 53, 53);
+
+}
+
+.tarjeta-producto p{
+    font-size: 20px;
+    font-weight: 400;
+    color: #333;
+    text-align: center;
+}
+
+.tarjeta-producto h3{
+    font-size: 24px;
+    font-weight: 600;
+    color: black;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+
+
+/* Sección Carrito */
+#carrito-vacio{
+    text-align: center;
+}
+
+
+
+#productos-container-cart{
+    width: 500px;
+    margin: auto;
+}
+
+.tarjeta-producto-cart{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.tarjeta-producto-cart img{
+    width: 120px;
+    height: 120px;
+    aspect-ratio: 1.5;
+}
+
+.tarjeta-producto-cart h3{
+    width: 130px;
+}
+
+#totales{
+    text-align: center;
+}
+
+.escondido{
+    display: none;
+}
+
+
+
+
+
+.btn-disminuir{
+    background: rgb(208, 44, 44);
+    border: none;
+    border-radius: 10px;
+    width: 25px;
+    height: 25px;
+    color: #fff;
+    margin-right: 5px;
+}
+
+.btn-aumentar{
+    background: rgb(208, 44, 44);
+    border: none;
+    border-radius: 10px;
+    width: 25px;
+    height: 25px;
+    color: #fff;
+    margin-left: 5px;
+
+}
+
+.btn-aumentar:hover{
+    background-color: rgb(239, 53, 53);
+}
+
+.btn-disminuir:hover{
+    background-color: rgb(239, 53, 53);
+}
+
+#totales button{
+    position: relative;
+    height: 50px;
+    width: 15%;
+    background: rgb(208, 44, 44);
+    border-radius: 25px;
+    margin-top: 30px;
+    border: none;
+    color: #fff;
+    margin: 15px;
+}
+
+#totales button:hover{
+    background-color: rgb(239, 53, 53);
+}
