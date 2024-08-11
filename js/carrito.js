@@ -3,12 +3,8 @@ const unidadesElement = document.getElementById("unidades");
 const precioElement = document.getElementById("precio");
 const carritoVacioElement = document.getElementById("carrito-vacio");
 const totalesElement = document.getElementById("totales");
-const reiniciarCarritoElement = document.getElementById ("reiniciar");
-const comprarElement = document.getElementById ("comprar");
-
-
-
-
+const reiniciarCarritoElement = document.getElementById("reiniciar");
+const comprarElement = document.getElementById("comprar");
 
 function crearTarjetaProducto(producto) {
     const productCard = document.createElement("div");
@@ -28,7 +24,7 @@ function crearTarjetaProducto(producto) {
     const cantidadSpan = productCard.querySelector(".cantidad");
 
     btnDisminuir.addEventListener("click", () => {
-        const nuevaCantidad = parseInt(cantidadSpan.textContent) - 1;
+        let nuevaCantidad = parseInt(cantidadSpan.textContent) - 1;
 
         if (nuevaCantidad <= 0) {
             contenedorTarjetas.removeChild(productCard);
@@ -36,19 +32,21 @@ function crearTarjetaProducto(producto) {
         } else {
             cantidadSpan.textContent = nuevaCantidad;
             disminuirDelCarrito(producto);
+            actualizarProductoEnLocalStorage(producto.id, nuevaCantidad);
         }
         actualizarTotales();
     });
 
     btnAumentar.addEventListener("click", () => {
         agregarAlCarrito(producto);
-        cantidadSpan.textContent = parseInt(cantidadSpan.textContent) + 1;
+        let nuevaCantidad = parseInt(cantidadSpan.textContent) + 1;
+        cantidadSpan.textContent = nuevaCantidad;
+        actualizarProductoEnLocalStorage(producto.id, nuevaCantidad);
         actualizarTotales();
     });
 
     return productCard;
 }
-
 
 function crearTarjetasProductosInicio() {
     const productos = JSON.parse(localStorage.getItem("libreria"));
@@ -63,10 +61,9 @@ function crearTarjetasProductosInicio() {
 crearTarjetasProductosInicio();
 actualizarTotales();
 
-
 // Función para actualizar los totales
 function actualizarTotales() {
-    const productos = JSON.parse(localStorage.getItem("libreria")) || []; // Maneja el caso cuando no hay datos
+    const productos = JSON.parse(localStorage.getItem("libreria")) || [];
     let unidades = 0;
     let precio = 0;
 
@@ -75,38 +72,32 @@ function actualizarTotales() {
             unidades += producto.cantidad;
             precio += producto.precio * producto.cantidad;
         });
-        unidadesElement.innerText = unidades;
-        precioElement.innerText = `$${precio.toFixed(2)}`;
-    } else {
-        unidadesElement.innerText = 0;
-        precioElement.innerText = `$0.00`;
     }
+
+    unidadesElement.innerText = unidades;
+    precioElement.innerText = `${precio.toFixed(2)}`;
 }
 
-// Función texto cuando el carrito esta vacío
+// Función texto cuando el carrito está vacío
 const revisarMensajeVacio = () => {
     const productos = JSON.parse(localStorage.getItem("libreria"));
     carritoVacioElement.classList.toggle("escondido", productos && productos.length > 0);
     totalesElement.classList.toggle("escondido", !(productos && productos.length > 0));
 }
 
-
-
-
-
 // Función para reiniciar el carrito
 const reiniciarCarrito = () => {
     localStorage.removeItem("libreria");
     if (contenedorTarjetas) {
-        contenedorTarjetas.innerHTML = ""; 
+        contenedorTarjetas.innerHTML = "";
     }
     actualizarTotales();
     revisarMensajeVacio();
 }
 
-// Alert Boton reiniciar carrito y comprar
+// Alert Botón reiniciar carrito y comprar
 reiniciarCarritoElement.addEventListener("click", () => {
-    Swal.fire ({
+    Swal.fire({
         title: "¿Está seguro?",
         icon: "warning",
         text: "Va a reiniciar el carrito",
@@ -116,10 +107,10 @@ reiniciarCarritoElement.addEventListener("click", () => {
         confirmButtonText: "Eliminar",
         cancelButtonText: "Cancelar",
     }).then((result) => {
-        if(result.isConfirmed){
+        if (result.isConfirmed) {
             Swal.fire({
-                title:"Eliminado!",
-                text:"Los productos del carrito han sido eliminados",
+                title: "Eliminado!",
+                text: "Los productos del carrito han sido eliminados",
                 icon: "success",
                 confirmButtonColor: "rgb(208, 44, 44)",
             });
@@ -134,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 comprarElement.addEventListener("click", () => {
-    Swal.fire ({
+    Swal.fire({
         title: "Éxito",
         icon: "success",
         text: "¡Su compra se realizó con éxito!",
@@ -142,7 +133,43 @@ comprarElement.addEventListener("click", () => {
     });
 });
 
+// Función para agregar un producto al carrito
+function agregarAlCarrito(producto) {
+    const productos = JSON.parse(localStorage.getItem("libreria")) || [];
+    const productoExistente = productos.find(p => p.id === producto.id);
 
+    if (productoExistente) {
+        productoExistente.cantidad += 1;
+    } else {
+        producto.cantidad = 1;
+        productos.push(producto);
+    }
 
+    localStorage.setItem("libreria", JSON.stringify(productos));
+}
 
+// Función para disminuir la cantidad de un producto del carrito
+function disminuirDelCarrito(producto) {
+    const productos = JSON.parse(localStorage.getItem("libreria")) || [];
+    const index = productos.findIndex(p => p.id === producto.id);
 
+    if (index !== -1) {
+        if (productos[index].cantidad > 1) {
+            productos[index].cantidad -= 1;
+        } else {
+            productos.splice(index, 1);
+        }
+        localStorage.setItem("libreria", JSON.stringify(productos));
+    }
+}
+
+// Función para actualizar la cantidad del producto en localStorage
+function actualizarProductoEnLocalStorage(id, cantidad) {
+    const productos = JSON.parse(localStorage.getItem("libreria")) || [];
+    const productoIndex = productos.findIndex(p => p.id === id);
+
+    if (productoIndex !== -1) {
+        productos[productoIndex].cantidad = cantidad;
+        localStorage.setItem("libreria", JSON.stringify(productos));
+    }
+}
